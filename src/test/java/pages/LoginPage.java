@@ -14,6 +14,8 @@ public class LoginPage extends BasePage {
     private static final By LOGIN_USER_NAME = By.cssSelector(".enter.logedin .uname");
     private static final By REMEMBER_CHECKBOX = By.id("memory");
     private static final By REGISTRATION_LINK = By.linkText("Регистрация");
+    //private static final By PERSONAL_AREA = By.partialLinkText("Личный");
+    private static final By PERSONAL_AREA = By.tagName("strong");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -33,15 +35,26 @@ public class LoginPage extends BasePage {
         }
     }
 
-    public void loginUsingCorrectCredentials(String loginName, String password) {
+    public void verifyRegistration() {
         driver.findElement(ENTER_LINK).click();
         driver.findElement(REGISTRATION_LINK).click();
+        wait.until(ExpectedConditions.titleIs(driver.getTitle()));
         driver.navigate().back();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(ENTER_LINK));
+    }
+
+    public void loginUsingCorrectCredentials(String loginName, String password) {
         driver.findElement(ENTER_LINK).click();
         driver.findElement(LOGIN_INPUT).sendKeys(loginName);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement((REMEMBER_CHECKBOX)).isSelected();
         driver.findElement(LOGIN_BUTTON).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(LOGIN_USER_NAME));
+    }
+
+    public void verifyPersonalArea() {
+        driver.findElement(LOGIN_USER_NAME).click();
+        driver.findElement(PERSONAL_AREA).click();
+        wait.until(ExpectedConditions.titleIs(driver.getTitle()));
     }
 }
