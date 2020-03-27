@@ -30,5 +30,6 @@ class LoginTest extends BaseTest {
         loginPage.openPage();
         loginPage.loginUsingCorrectCredentials(prop.get("username"), prop.get("password"));
         loginPage.verifyPersonalArea();
+        assertEquals("Профили TUT.BY", driver.getTitle());
     }
 }

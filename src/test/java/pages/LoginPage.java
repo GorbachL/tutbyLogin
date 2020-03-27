@@ -5,6 +5,8 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.Set;
+
 public class LoginPage extends BasePage {
 
     private static final By ENTER_LINK = By.className("enter");
@@ -55,6 +57,8 @@ public class LoginPage extends BasePage {
     public void verifyPersonalArea() {
         driver.findElement(LOGIN_USER_NAME).click();
         driver.findElement(PERSONAL_AREA).click();
+        Set<String> windowHandles = driver.getWindowHandles();
+        driver.switchTo().window((String) windowHandles.toArray()[1]);
         wait.until(ExpectedConditions.titleIs(driver.getTitle()));
     }
 }
