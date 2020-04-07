@@ -45,11 +45,12 @@ public class LoginPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(ENTER_LINK));
     }
 
-    public void loginUsingCorrectCredentials(String loginName, String password) {
+    public void loginUsingCorrectCredentials(String loginName, String password) throws InterruptedException {
         driver.findElement(ENTER_LINK).click();
         driver.findElement(LOGIN_INPUT).sendKeys(loginName);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement((REMEMBER_CHECKBOX)).isSelected();
+        Thread.sleep(5000);     //Explicit wait
         driver.findElement(LOGIN_BUTTON).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(LOGIN_USER_NAME));
     }
