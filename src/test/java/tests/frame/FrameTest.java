@@ -1,4 +1,4 @@
-package tests;
+package tests.frame;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -14,7 +14,7 @@ class FrameTest {
 	private static final By BOLD_BUTTON = By.cssSelector("#mceu_3");
 
 	@Test
-	void addNewTextInFrame() throws InterruptedException {
+	void addNewTextInFrameTest() throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver", "src/test/resources/webdrivers/chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();

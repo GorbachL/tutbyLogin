@@ -1,4 +1,4 @@
-package tests;
+package tests.tutBy;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
