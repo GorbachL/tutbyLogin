@@ -6,7 +6,6 @@ import pages.LoginPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 class LoginTest extends BaseTest {
 
 	@Test
