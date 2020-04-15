@@ -1,4 +1,4 @@
-package tests.tutBy;
+package tests.tutBy.task30_test;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.LoginPage;
+import pages.task30_loginWithCorrectCredentials.LoginPage;
 
 import java.util.stream.Stream;
 
