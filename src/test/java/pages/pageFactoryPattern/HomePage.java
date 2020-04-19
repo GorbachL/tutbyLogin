@@ -40,6 +40,8 @@ public class HomePage extends BasePage {
 
 	public LoginPage logoutFromPage() {
 		logOutFromHomePage();
-		return new LoginPage(driver);
+		LoginPage loginPage = new LoginPage(driver);
+		loginPage.isPageOpened();
+		return loginPage;
 	}
 }

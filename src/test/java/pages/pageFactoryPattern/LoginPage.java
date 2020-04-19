@@ -7,6 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class LoginPage extends BasePage {
 
 	@FindBy(className = "enter")
@@ -44,12 +46,11 @@ public class LoginPage extends BasePage {
 		loginInput.sendKeys(loginName);
 		passwordInput.sendKeys(password);
 		loginButton.click();
-		verifyHomePageIsLoaded();
-	}
-
-	private void verifyHomePageIsLoaded() {
 		HomePage homePage = new HomePage(driver);
-		homePage.openPage();
+		homePage.isPageOpened();
+		String actualResult = driver.findElement(By.cssSelector(".uname")).getText();
+		String expectedResult = "Selenium Test";
+		assertEquals(expectedResult, actualResult);
 	}
 
 	public HomePage loginUser(String loginName, String password) {
