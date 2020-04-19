@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class HomePage extends BasePage {
 
 	private static final By LOGIN_USER_NAME = By.cssSelector(".uname");
@@ -11,6 +13,7 @@ public class HomePage extends BasePage {
 
 	public HomePage(WebDriver driver) {
 		super(driver);
+		isPageOpened();
 	}
 
 	@Override
@@ -24,8 +27,12 @@ public class HomePage extends BasePage {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(LOGIN_USER_NAME));
 	}
 
-	public void logout() {
+	public LoginPage logout() {
 		driver.findElement(LOGIN_USER_NAME).click();
 		driver.findElement(LOGOUT_BUTTON).click();
+		String actualResult = driver.findElement(By.cssSelector(".enter")).getAttribute("text");
+		String expectedResult = "Войти";
+		assertEquals(expectedResult, actualResult);
+		return new LoginPage(driver);
 	}
 }
