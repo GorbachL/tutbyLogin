@@ -1,23 +1,26 @@
 package tests.tutBy.pageObjectTest;
 
+import driver.DriverFactory;
+import driver.DriverManager;
+import driver.DriverType;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import utils.PropertyManager;
 
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
-	public WebDriver driver;
+	private DriverManager driverManager;
+	static WebDriver driver;
 	static PropertyManager prop;
 
 	@BeforeEach
 	public void setUp() {
-		System.setProperty("webdriver.chrome.driver", "src/test/resources/webdrivers/chromedriver.exe");
-		driver = new ChromeDriver();
+		driverManager = DriverFactory.getManager(DriverType.CHROME);
+		driver = driverManager.getDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 	}
@@ -29,6 +32,6 @@ public class BaseTest {
 
 	@AfterEach
 	public void afterTest() {
-		driver.quit();
+		driverManager.quiteDriver();
 	}
 }
