@@ -42,7 +42,7 @@ class DownloadFile {
 	}
 
 	@Test
-	void downloadFile() throws InterruptedException {
+	void downloadFileTest() throws InterruptedException {
 		Thread.sleep(2000);
 
 		//#1 - download last file in the list
