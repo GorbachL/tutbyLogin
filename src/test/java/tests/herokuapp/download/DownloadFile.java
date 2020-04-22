@@ -27,8 +27,7 @@ class DownloadFile {
 
 		ChromeOptions options = new ChromeOptions();
 		Map<String, Object> chromePrefs = new HashMap<>();
-		chromePrefs.put("profile.default_content_settings.popups", 0);
-		chromePrefs.put("download.default_directory", System.getProperty("user.dir"));
+		chromePrefs.put("download.default_directory", "C:\\Users\\LenaGorbach\\IdeaProjects\\tutbyLogin\\src\\test\\resources\\downloadedFiles");
 		options.setExperimentalOption("prefs", chromePrefs);
 
 		driver = new ChromeDriver(options);
@@ -46,12 +45,12 @@ class DownloadFile {
 	void downloadFile() throws InterruptedException {
 		Thread.sleep(2000);
 
-		//#1
+		//#1 - download last file in the list
 		List<WebElement> list = driver.findElements(FILE_LIST);
 		WebElement lastFileInTheList = list.get(list.size() - 1);
 		lastFileInTheList.click();
 
-		//#2
+		//#2 - download a specific file if you know that it exists
 		WebElement specificFile = driver.findElement(By.xpath(".//a[text()='car.jpg']"));
 		specificFile.click();
 
