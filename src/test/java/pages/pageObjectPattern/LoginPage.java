@@ -8,7 +8,6 @@ import utils.ScreenshotUtils;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LoginPage extends BasePage {
 
