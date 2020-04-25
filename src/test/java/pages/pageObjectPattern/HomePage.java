@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HomePage extends BasePage {
 
@@ -30,9 +29,10 @@ public class HomePage extends BasePage {
 	public LoginPage logout() {
 		driver.findElement(LOGIN_USER_NAME).click();
 		driver.findElement(LOGOUT_BUTTON).click();
-		String actualResult = driver.findElement(By.cssSelector(".enter")).getAttribute("text");
-		String expectedResult = "Войти";
-		assertEquals(expectedResult, actualResult);
 		return new LoginPage(driver);
+	}
+
+	public String getUserFullName() {
+		return driver.findElement(LOGIN_USER_NAME).getText();
 	}
 }

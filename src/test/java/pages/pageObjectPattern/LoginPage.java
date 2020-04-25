@@ -5,7 +5,6 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LoginPage extends BasePage {
 
@@ -40,9 +39,10 @@ public class LoginPage extends BasePage {
 		driver.findElement(LOGIN_INPUT).sendKeys(loginName);
 		driver.findElement(PASSWORD_INPUT).sendKeys(password);
 		driver.findElement(LOGIN_BUTTON).click();
-		String actualResult = driver.findElement(By.cssSelector(".uname")).getText();
-		String expectedResult = "Selenium Test";
-		assertEquals(expectedResult, actualResult);
 		return new HomePage(driver);
+	}
+
+	public String loginPageIsOpened() {
+		return driver.findElement(ENTER_LINK).getAttribute("text");
 	}
 }
