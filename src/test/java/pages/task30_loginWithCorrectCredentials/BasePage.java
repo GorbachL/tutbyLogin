@@ -1,4 +1,4 @@
-package pages;
+package pages.task30_loginWithCorrectCredentials;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;

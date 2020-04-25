@@ -1,8 +1,8 @@
-package tests.tutBy;
+package tests.tutBy.task30_test;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import pages.LoginPage;
+import pages.task30_loginWithCorrectCredentials.LoginPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

@@ -1,15 +1,18 @@
-package tests.alert;
+package tests.tutBy.task30_test;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import utils.PropertyManager;
 
 import java.util.concurrent.TimeUnit;
 
-public class AlertBaseTest {
+public class BaseTest {
 
 	WebDriver driver;
+	static PropertyManager prop;
 
 	@BeforeEach
 	public void setUp() {
@@ -17,7 +20,11 @@ public class AlertBaseTest {
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		driver.get("https://the-internet.herokuapp.com/javascript_alerts");
+	}
+
+	@BeforeAll
+	static void loadProperties() {
+		prop = new PropertyManager();
 	}
 
 	@AfterEach
