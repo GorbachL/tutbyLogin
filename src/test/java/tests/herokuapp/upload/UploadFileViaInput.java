@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import utils.ScreenshotUtils;
 
+import java.io.File;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -44,10 +45,10 @@ class UploadFileViaInput {
 
 	@Test
 	void uploadOneFileTest() throws IOException {
-		String filePath = "C:\\Users\\LenaGorbach\\IdeaProjects\\tutbyLogin\\src\\test\\resources\\fileToUpload\\Image-1.jpg";
-		uploadFile(filePath);
+		File file = new File("files/fileToUpload/Image-1.jpg");
+		uploadFile(file.getAbsolutePath());
 		String textAndFileName = driver.findElement(UPLOADED_FILES_TEXT_AND_FILE_NAME).getText();
 		assertEquals("File Uploaded!\n" + "Image-1.jpg", textAndFileName, "File is not uploaded");
-		ScreenshotUtils.takeScreenshot(driver, "C:\\Users\\LenaGorbach\\IdeaProjects\\tutbyLogin\\src\\test\\resources\\screenShots\\FileUploaded_ViaInput.png");
+		ScreenshotUtils.takeScreenshot(driver, "files/screenshots_uploadedFile/FileUploaded_1.png");
 	}
 }

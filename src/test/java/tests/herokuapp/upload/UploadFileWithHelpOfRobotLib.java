@@ -13,6 +13,7 @@ import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -76,16 +77,16 @@ class UploadFileWithHelpOfRobotLib {
 	 */
 	@Test
 	void uploadFileViaDragAndDropTest() throws InterruptedException, AWTException, IOException {
-		String filePath = "C:\\Users\\LenaGorbach\\IdeaProjects\\tutbyLogin\\src\\test\\resources\\fileToUpload\\Image-1.jpg";
+		File file = new File("files/fileToUpload/Image-1.jpg");
 		wait.until(ExpectedConditions.elementToBeClickable(DRAG_AND_DROP));
 
 		//#1 Upload file ==> it is possible to select file using Drag and Drop field
 		driver.findElement(DRAG_AND_DROP).click();
-		uploadFileWithRobot(filePath);
+		uploadFileWithRobot(file.getAbsolutePath());
 		Thread.sleep(2000); //sleep is needed here
 		String addedFileInDrugAndDrop = driver.findElement(DRAG_AND_DROP_DETAILS).getText();
 		assertEquals("Image-1.jpg", addedFileInDrugAndDrop, "File is not added");
-		ScreenshotUtils.takeScreenshot(driver, "C:\\Users\\LenaGorbach\\IdeaProjects\\tutbyLogin\\src\\test\\resources\\screenShots\\UploadFileWithHelpOfRobotLib.png");
+		ScreenshotUtils.takeScreenshot(driver, "files/screenshots_uploadedFile/UploadFileWithHelpOfRobotLib.png");
 	}
 
 	/**
@@ -100,22 +101,21 @@ class UploadFileWithHelpOfRobotLib {
 	 */
 	@Test
 	void uploadFileViaChoseFileInputTest() throws InterruptedException, AWTException, IOException {
-		String filePath = "C:\\Users\\LenaGorbach\\IdeaProjects\\tutbyLogin\\src\\test\\resources\\fileToUpload\\Image-1.jpg";
+		File file = new File("files/fileToUpload/Image-1.jpg");
 		wait.until(ExpectedConditions.elementToBeClickable(DRAG_AND_DROP));
 
 		//#2 Upload file ==> using Choose File input
-		Thread.sleep(1000); //sleep is needed here
 		WebElement input = driver.findElement(FILE_INPUT);
 		clickJs(driver, input);
-		uploadFileWithRobot(filePath);
+		uploadFileWithRobot(file.getAbsolutePath());
 		Thread.sleep(1000); //sleep is needed here
 		clickJs(driver, input);
-		uploadFileWithRobot(filePath);
+		uploadFileWithRobot(file.getAbsolutePath());
 		Thread.sleep(2000); //sleep is needed here
 
 		driver.findElement(UPLOAD_BUTTON).click();
 		String textAndFileName = driver.findElement(UPLOADED_FILES_TEXT_AND_FILE_NAME).getText();
 		assertEquals("File Uploaded!\n" + "Image-1.jpg", textAndFileName, "File is not uploaded");
-		ScreenshotUtils.takeScreenshot(driver, "C:\\Users\\LenaGorbach\\IdeaProjects\\tutbyLogin\\src\\test\\resources\\screenShots\\UploadFileViaInput.png");
+		ScreenshotUtils.takeScreenshot(driver, "files/screenshots_uploadedFile/FileUploaded_2.png");
 	}
 }

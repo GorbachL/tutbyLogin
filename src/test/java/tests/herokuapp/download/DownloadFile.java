@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,12 +26,21 @@ class DownloadFile {
 	void setUp() {
 		System.setProperty("webdriver.chrome.driver", "src/test/resources/webdrivers/chromedriver.exe");
 
-		ChromeOptions options = new ChromeOptions();
+		// Setting new download directory path
 		Map<String, Object> chromePrefs = new HashMap<>();
-		chromePrefs.put("download.default_directory", "C:\\Users\\LenaGorbach\\IdeaProjects\\tutbyLogin\\src\\test\\resources\\downloadedFiles");
+
+		// Use File.separator as it will work on any OS
+		chromePrefs.put("download.default_directory", System.getProperty("user.dir")
+				+ File.separator + "files"
+				+ File.separator + "downloadedFiles");
+
+		// Adding capabilities to ChromeOptions
+		ChromeOptions options = new ChromeOptions();
 		options.setExperimentalOption("prefs", chromePrefs);
 
+		// Launching browser with desired capabilities
 		driver = new ChromeDriver(options);
+
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.get("https://the-internet.herokuapp.com/download");
