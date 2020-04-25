@@ -1,4 +1,4 @@
-package tests.herokuapp.alert;
+package tests.alert;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Alert;
