@@ -4,12 +4,14 @@ import org.junit.jupiter.api.Test;
 import pages.pageObjectPattern.HomePage;
 import pages.pageObjectPattern.LoginPage;
 
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LoginTest extends BaseTest {
 
 	@Test
-	void logInTest() {
+	void logInTest() throws IOException {
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.openPage()
 				.loginUsingCorrectCredentials(prop.get("username"), prop.get("password"));

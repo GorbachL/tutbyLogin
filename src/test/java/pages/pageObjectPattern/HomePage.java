@@ -36,9 +36,10 @@ public class HomePage extends BasePage {
 		ScreenshotUtils.takeScreenshot(driver, "files/screenShots/click_Logout_fromHomePage.png");
 		driver.findElement(LOGOUT_BUTTON).click();
 		ScreenshotUtils.takeScreenshot(driver, "files/screenShots/loginPage_afterLogout.png");
-		String actualResult = driver.findElement(By.cssSelector(".enter")).getAttribute("text");
-		String expectedResult = "Войти";
-		assertEquals(expectedResult, actualResult);
 		return new LoginPage(driver);
+	}
+
+	public String getUserFullName() {
+		return driver.findElement(LOGIN_USER_NAME).getText();
 	}
 }

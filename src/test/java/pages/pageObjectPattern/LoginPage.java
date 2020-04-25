@@ -44,9 +44,10 @@ public class LoginPage extends BasePage {
 		driver.findElement(PASSWORD_INPUT).sendKeys(password);
 		driver.findElement(LOGIN_BUTTON).click();
 		ScreenshotUtils.takeScreenshot(driver, "files/screenShots/homePageView_afterLogin.png");
-		String actualResult = driver.findElement(By.cssSelector(".uname")).getText();
-		String expectedResult = "Selenium Test";
-		assertEquals(expectedResult, actualResult);
 		return new HomePage(driver);
+	}
+
+	public String loginPageIsOpened() {
+		return driver.findElement(ENTER_LINK).getAttribute("text");
 	}
 }
