@@ -31,11 +31,11 @@ public class HomePage extends BasePage {
 	}
 
 	public LoginPage logout() throws IOException {
-		ScreenshotUtils.takeScreenshot(driver, "C:\\Users\\LenaGorbach\\IdeaProjects\\tutbyLogin\\src\\test\\resources\\screenShots\\homePageView.png");
+		ScreenshotUtils.takeScreenshot(driver, "files/screenShots/homePageView.png");
 		driver.findElement(LOGIN_USER_NAME).click();
-		ScreenshotUtils.takeScreenshot(driver, "C:\\Users\\LenaGorbach\\IdeaProjects\\tutbyLogin\\src\\test\\resources\\screenShots\\click_Logout_fromHomePage.png");
+		ScreenshotUtils.takeScreenshot(driver, "files/screenShots/click_Logout_fromHomePage.png");
 		driver.findElement(LOGOUT_BUTTON).click();
-		ScreenshotUtils.takeScreenshot(driver, "C:\\Users\\LenaGorbach\\IdeaProjects\\tutbyLogin\\src\\test\\resources\\screenShots\\loginPage_afterLogout.png");
+		ScreenshotUtils.takeScreenshot(driver, "files/screenShots/loginPage_afterLogout.png");
 		String actualResult = driver.findElement(By.cssSelector(".enter")).getAttribute("text");
 		String expectedResult = "Войти";
 		assertEquals(expectedResult, actualResult);
