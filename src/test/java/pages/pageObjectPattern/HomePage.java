@@ -3,7 +3,11 @@ package pages.pageObjectPattern;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import utils.ScreenshotUtils;
 
+import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HomePage extends BasePage {
 
@@ -26,13 +30,15 @@ public class HomePage extends BasePage {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(LOGIN_USER_NAME));
 	}
 
-	public LoginPage logout() {
+	public LoginPage logout() throws IOException {
+		ScreenshotUtils.takeScreenshot(driver, "files/screenShots/homePageView.png");
 		driver.findElement(LOGIN_USER_NAME).click();
+		ScreenshotUtils.takeScreenshot(driver, "files/screenShots/click_Logout_fromHomePage.png");
 		driver.findElement(LOGOUT_BUTTON).click();
+		ScreenshotUtils.takeScreenshot(driver, "files/screenShots/loginPage_afterLogout.png");
+		String actualResult = driver.findElement(By.cssSelector(".enter")).getAttribute("text");
+		String expectedResult = "Войти";
+		assertEquals(expectedResult, actualResult);
 		return new LoginPage(driver);
-	}
-
-	public String getUserFullName() {
-		return driver.findElement(LOGIN_USER_NAME).getText();
 	}
 }

@@ -4,7 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import utils.ScreenshotUtils;
 
+import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LoginPage extends BasePage {
 
@@ -34,15 +38,15 @@ public class LoginPage extends BasePage {
 		}
 	}
 
-	public HomePage loginUsingCorrectCredentials(String loginName, String password) {
+	public HomePage loginUsingCorrectCredentials(String loginName, String password) throws IOException {
 		driver.findElement(ENTER_LINK).click();
 		driver.findElement(LOGIN_INPUT).sendKeys(loginName);
 		driver.findElement(PASSWORD_INPUT).sendKeys(password);
 		driver.findElement(LOGIN_BUTTON).click();
+		ScreenshotUtils.takeScreenshot(driver, "files/screenShots/homePageView_afterLogin.png");
+		String actualResult = driver.findElement(By.cssSelector(".uname")).getText();
+		String expectedResult = "Selenium Test";
+		assertEquals(expectedResult, actualResult);
 		return new HomePage(driver);
-	}
-
-	public String loginPageIsOpened() {
-		return driver.findElement(ENTER_LINK).getAttribute("text");
 	}
 }
