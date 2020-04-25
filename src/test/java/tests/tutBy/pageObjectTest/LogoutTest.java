@@ -1,10 +1,13 @@
 package tests.tutBy.pageObjectTest;
 
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import pages.pageObjectPattern.HomePage;
 import pages.pageObjectPattern.LoginPage;
 
 import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
