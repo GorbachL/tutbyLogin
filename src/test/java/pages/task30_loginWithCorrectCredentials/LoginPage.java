@@ -1,4 +1,4 @@
-package pages;
+package pages.task30_loginWithCorrectCredentials;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;

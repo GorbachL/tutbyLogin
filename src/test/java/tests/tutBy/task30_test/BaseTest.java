@@ -1,4 +1,4 @@
-package tests.tutBy;
+package tests.tutBy.task30_test;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
