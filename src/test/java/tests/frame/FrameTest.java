@@ -1,4 +1,4 @@
-package tests.herokuapp.frame;
+package tests.frame;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
