@@ -37,7 +37,7 @@ public class LoginPage extends BasePage {
 		driver.findElement(LOGIN_INPUT).sendKeys(loginName);
 		driver.findElement(PASSWORD_INPUT).sendKeys(password);
 		driver.findElement(LOGIN_BUTTON).click();
-		ScreenshotUtils.takeScreenshot(driver, "files/screenShots/homePageView_afterLogin.png");
+		ScreenshotUtils.takeScreenshot("files/screenShots/homePageView_afterLogin.png");
 		return new HomePage();
 	}
 

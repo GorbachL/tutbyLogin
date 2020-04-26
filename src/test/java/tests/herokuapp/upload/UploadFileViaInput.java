@@ -1,12 +1,14 @@
 package tests.herokuapp.upload;
 
+import driver.DriverFactory;
+import driver.DriverManager;
+import driver.DriverType;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import utils.ScreenshotUtils;
 
 import java.io.File;
@@ -22,19 +24,21 @@ class UploadFileViaInput {
 	private static final By UPLOADED_FILES_PANEL = By.cssSelector("#uploaded-files");
 	private static final By UPLOADED_FILES_TEXT_AND_FILE_NAME = By.cssSelector(".example");
 
-	private WebDriver driver;
+	private DriverManager driverManager;
+	protected WebDriver driver;
 
 	@BeforeEach
 	void setUp() {
 		System.setProperty("webdriver.chrome.driver", "src/test/resources/webdrivers/chromedriver.exe");
-		driver = new ChromeDriver();
+		driverManager = DriverFactory.getManager(DriverType.CHROME);
+		driver = driverManager.getDriver();
 		driver.manage().window().maximize();
 		driver.get("https://the-internet.herokuapp.com/upload");
 	}
 
 	@AfterEach
 	void afterTest() {
-		driver.quit();
+		driverManager.quiteDriver();
 	}
 
 	private void uploadFile(String pathFile) {
@@ -49,6 +53,6 @@ class UploadFileViaInput {
 		uploadFile(file.getAbsolutePath());
 		String textAndFileName = driver.findElement(UPLOADED_FILES_TEXT_AND_FILE_NAME).getText();
 		assertEquals("File Uploaded!\n" + "Image-1.jpg", textAndFileName, "File is not uploaded");
-		ScreenshotUtils.takeScreenshot(driver, "files/screenshots_uploadedFile/FileUploaded_1.png");
+		ScreenshotUtils.takeScreenshot("files/screenshots_uploadedFile/FileUploaded_1.png");
 	}
 }

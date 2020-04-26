@@ -1,10 +1,12 @@
 package tests.herokuapp.upload;
 
+import driver.DriverFactory;
+import driver.DriverManager;
+import driver.DriverType;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.ScreenshotUtils;
@@ -27,13 +29,15 @@ class UploadFileWithHelpOfRobotLib {
 	private static final By UPLOADED_FILES_PANEL = By.cssSelector("#uploaded-files");
 	private static final By UPLOADED_FILES_TEXT_AND_FILE_NAME = By.cssSelector(".example");
 
-	private WebDriver driver;
+	private DriverManager driverManager;
+	protected WebDriver driver;
 	private WebDriverWait wait;
 
 	@BeforeEach
 	void setUp() {
 		System.setProperty("webdriver.chrome.driver", "src/test/resources/webdrivers/chromedriver.exe");
-		driver = new ChromeDriver();
+		driverManager = DriverFactory.getManager(DriverType.CHROME);
+		driver = driverManager.getDriver();
 		wait = new WebDriverWait(driver, 10);
 		driver.manage().window().maximize();
 		driver.get("https://the-internet.herokuapp.com/upload");
@@ -41,7 +45,7 @@ class UploadFileWithHelpOfRobotLib {
 
 	@AfterEach
 	void afterTest() {
-		driver.quit();
+		driverManager.quiteDriver();
 	}
 
 	void clickJs(WebDriver driver, WebElement element) {
@@ -86,7 +90,7 @@ class UploadFileWithHelpOfRobotLib {
 		Thread.sleep(2000); //sleep is needed here
 		String addedFileInDrugAndDrop = driver.findElement(DRAG_AND_DROP_DETAILS).getText();
 		assertEquals("Image-1.jpg", addedFileInDrugAndDrop, "File is not added");
-		ScreenshotUtils.takeScreenshot(driver, "files/screenshots_uploadedFile/UploadFileWithHelpOfRobotLib.png");
+		ScreenshotUtils.takeScreenshot("files/screenshots_uploadedFile/UploadFileWithHelpOfRobotLib.png");
 	}
 
 	/**
@@ -116,6 +120,6 @@ class UploadFileWithHelpOfRobotLib {
 		driver.findElement(UPLOAD_BUTTON).click();
 		String textAndFileName = driver.findElement(UPLOADED_FILES_TEXT_AND_FILE_NAME).getText();
 		assertEquals("File Uploaded!\n" + "Image-1.jpg", textAndFileName, "File is not uploaded");
-		ScreenshotUtils.takeScreenshot(driver, "files/screenshots_uploadedFile/FileUploaded_2.png");
+		ScreenshotUtils.takeScreenshot("files/screenshots_uploadedFile/FileUploaded_2.png");
 	}
 }

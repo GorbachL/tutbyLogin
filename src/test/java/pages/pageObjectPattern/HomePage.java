@@ -24,11 +24,11 @@ public class HomePage extends BasePage {
 	}
 
 	public LoginPage logout() throws IOException {
-		ScreenshotUtils.takeScreenshot(driver, "files/screenShots/homePageView.png");
+		ScreenshotUtils.takeScreenshot("files/screenShots/homePageView.png");
 		driver.findElement(LOGIN_USER_NAME).click();
-		ScreenshotUtils.takeScreenshot(driver, "files/screenShots/click_Logout_fromHomePage.png");
+		ScreenshotUtils.takeScreenshot("files/screenShots/click_Logout_fromHomePage.png");
 		driver.findElement(LOGOUT_BUTTON).click();
-		ScreenshotUtils.takeScreenshot(driver, "files/screenShots/loginPage_afterLogout.png");
+		ScreenshotUtils.takeScreenshot("files/screenShots/loginPage_afterLogout.png");
 		return new LoginPage();
 	}
 
