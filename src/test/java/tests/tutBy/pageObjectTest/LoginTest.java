@@ -23,13 +23,12 @@ class LoginTest extends BaseTest {
 	Correct variant (after login you're on the Home page):
 	assertEquals(EXPECTED_USER_NAME, homePage.getUserFullName()); //Names can be changed
 	 */
-
 	@Test
 	void logInTest() throws IOException {
-		LoginPage loginPage = new LoginPage(driver);
+		LoginPage loginPage = new LoginPage();
 		loginPage.openPage()
 				.loginUsingCorrectCredentials(prop.get("username"), prop.get("password"));
-		HomePage homePage = new HomePage(driver);
+		HomePage homePage = new HomePage();
 		String actualResult = homePage.getUserFullName();
 		String expectedResult = "Selenium Test";
 		assertEquals(expectedResult, actualResult);

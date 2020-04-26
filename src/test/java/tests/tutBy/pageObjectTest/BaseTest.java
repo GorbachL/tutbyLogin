@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
 
 	private DriverManager driverManager;
-	static WebDriver driver;
+	protected WebDriver driver;
 	static PropertyManager prop;
 
 	@BeforeEach
