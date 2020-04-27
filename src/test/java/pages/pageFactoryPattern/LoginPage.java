@@ -48,9 +48,6 @@ public class LoginPage extends BasePage {
 		loginButton.click();
 		HomePage homePage = new HomePage(driver);
 		homePage.isPageOpened();
-		String actualResult = driver.findElement(By.cssSelector(".uname")).getText();
-		String expectedResult = "Selenium Test";
-		assertEquals(expectedResult, actualResult);
 	}
 
 	public HomePage loginUser(String loginName, String password) {
