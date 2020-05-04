@@ -1,5 +1,6 @@
 package tests.tutBy.pageObjectTest;
 
+import io.qameta.allure.*;
 import org.junit.jupiter.api.Test;
 import pages.pageObjectPattern.HomePage;
 import pages.pageObjectPattern.LoginPage;
@@ -8,7 +9,7 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
+@Feature("Page Object")
 class LoginTest extends BaseTest {
 
 	/**
@@ -23,6 +24,10 @@ class LoginTest extends BaseTest {
 	Correct variant (after login you're on the Home page):
 	assertEquals(EXPECTED_USER_NAME, homePage.getUserFullName()); //Names can be changed
 	 */
+	@Description("Login Test from pageObjectTest folder")
+	@TmsLink("snoopdogg")
+	@Issue("johnnydepp")
+	@Step("Login to tyt.by homepage")
 	@Test
 	void logInTest() throws IOException {
 		LoginPage loginPage = new LoginPage();

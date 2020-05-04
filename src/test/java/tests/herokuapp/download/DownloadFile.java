@@ -1,5 +1,6 @@
 package tests.herokuapp.download;
 
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-
+@Feature("Download")
 class DownloadFile {
 
 	private static final By FILE_LIST = By.cssSelector("div.example>a");

@@ -7,7 +7,6 @@ import utils.ScreenshotUtils;
 
 import java.io.IOException;
 
-
 public class LoginPage extends BasePage {
 
 	private static final String URL = "https://www.tut.by/";
@@ -38,6 +37,7 @@ public class LoginPage extends BasePage {
 		driver.findElement(PASSWORD_INPUT).sendKeys(password);
 		driver.findElement(LOGIN_BUTTON).click();
 		ScreenshotUtils.takeScreenshot("files/screenShots/homePageView_afterLogin.png");
+		ScreenshotUtils.captureScreenshot();
 		return new HomePage();
 	}
 

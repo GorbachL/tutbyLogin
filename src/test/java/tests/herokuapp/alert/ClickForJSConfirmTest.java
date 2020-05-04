@@ -1,11 +1,13 @@
 package tests.herokuapp.alert;
 
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Feature("Alert")
 class ClickForJSConfirmTest extends AlertBaseTest {
 
 	private static final By JS_CONFIRM = By.cssSelector("button[onclick='jsConfirm()']");
