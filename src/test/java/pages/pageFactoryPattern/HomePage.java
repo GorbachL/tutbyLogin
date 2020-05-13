@@ -44,4 +44,8 @@ public class HomePage extends BasePage {
 		loginPage.isPageOpened();
 		return loginPage;
 	}
+
+	public String getUserName() {
+		return driver.findElement(LOGIN_USER_NAME).getText();
+	}
 }

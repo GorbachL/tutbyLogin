@@ -2,7 +2,6 @@ package pages.pageObjectPattern;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.ScreenshotUtils;
 
@@ -16,10 +15,6 @@ public class LoginPage extends BasePage {
 	private static final By LOGIN_INPUT = By.xpath("//input[@name='login']");
 	private static final By PASSWORD_INPUT = By.name("password");
 	private static final By LOGIN_BUTTON = By.cssSelector(".button.auth__enter");
-
-	public LoginPage(WebDriver driver) {
-		super(driver);
-	}
 
 	@Override
 	public LoginPage openPage() {
@@ -42,8 +37,8 @@ public class LoginPage extends BasePage {
 		driver.findElement(LOGIN_INPUT).sendKeys(loginName);
 		driver.findElement(PASSWORD_INPUT).sendKeys(password);
 		driver.findElement(LOGIN_BUTTON).click();
-		ScreenshotUtils.takeScreenshot(driver, "files/screenShots/homePageView_afterLogin.png");
-		return new HomePage(driver);
+		ScreenshotUtils.takeScreenshot("files/screenShots/homePageView_afterLogin.png");
+		return new HomePage();
 	}
 
 	public String loginPageIsOpened() {
