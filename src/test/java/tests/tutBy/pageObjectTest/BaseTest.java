@@ -6,11 +6,17 @@ import driver.DriverType;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Listeners;
+import utils.MyTestWatcher;
 import utils.PropertyManager;
+import utils.TestListener;
 
 import java.util.concurrent.TimeUnit;
 
+@Listeners(TestListener.class)
+@ExtendWith(MyTestWatcher.class)
 public class BaseTest {
 
 	private DriverManager driverManager;

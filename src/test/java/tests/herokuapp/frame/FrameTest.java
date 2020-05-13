@@ -1,5 +1,6 @@
 package tests.herokuapp.frame;
 
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Feature("Frame")
 class FrameTest {
 
 	private static final By CONTENT_INPUT = By.cssSelector(".mce-content-body");

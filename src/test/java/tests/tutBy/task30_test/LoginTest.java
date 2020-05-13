@@ -1,11 +1,13 @@
 package tests.tutBy.task30_test;
 
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import pages.task30_loginWithCorrectCredentials.LoginPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Feature("task_30")
 class LoginTest extends BaseTest {
 
 	@Test

@@ -1,9 +1,11 @@
 package tests.tutBy.pageFactoryTest;
 
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.Test;
 import pages.pageFactoryPattern.HomePage;
 import pages.pageFactoryPattern.LoginPage;
 
+@Feature("Factory")
 class LogoutTest extends BaseTest {
 
 	@Test

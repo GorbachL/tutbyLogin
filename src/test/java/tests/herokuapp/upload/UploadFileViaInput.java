@@ -3,6 +3,7 @@ package tests.herokuapp.upload;
 import driver.DriverFactory;
 import driver.DriverManager;
 import driver.DriverType;
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,7 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
+@Feature("Upload")
 class UploadFileViaInput {
 
 	private static final By FILE_INPUT = By.cssSelector("#file-upload");

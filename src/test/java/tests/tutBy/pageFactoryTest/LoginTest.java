@@ -1,12 +1,13 @@
 package tests.tutBy.pageFactoryTest;
 
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import pages.pageFactoryPattern.HomePage;
 import pages.pageFactoryPattern.LoginPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Feature("Factory")
 class LoginTest extends BaseTest {
 
 	@Test
