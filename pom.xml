@@ -56,7 +56,7 @@
 				<configuration>
 					<reportVersion>2.10.0</reportVersion>
 					<propertiesFilePath>
-						C:\Users\LenaGorbach\IdeaProjects\tutbyLogin\src\test\resources\allure.properties
+						allure.properties
 					</propertiesFilePath>
 					<reportDirectory>
 						${basedir}/target/allure-reports
