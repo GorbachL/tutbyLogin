@@ -34,7 +34,7 @@ public class MyTestWatcher implements TestWatcher {
 
 
 	@Attachment(value = "Last screen state from MyTestWatcher", type = "image/png")
-	private byte[] makeScreenshot() {
+	private static byte[] makeScreenshot() {
 		WebDriver driver = DriverFactory.getManager(CHROME).getDriver();
 		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 	}

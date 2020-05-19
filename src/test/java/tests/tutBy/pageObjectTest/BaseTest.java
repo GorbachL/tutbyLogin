@@ -3,7 +3,7 @@ package tests.tutBy.pageObjectTest;
 import driver.DriverFactory;
 import driver.DriverManager;
 import driver.DriverType;
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 @ExtendWith(MyTestWatcher.class)
 public class BaseTest {
 
-	private DriverManager driverManager;
+	private static DriverManager driverManager;
 	protected WebDriver driver;
 	static PropertyManager prop;
 
@@ -36,8 +36,8 @@ public class BaseTest {
 		prop = new PropertyManager();
 	}
 
-	@AfterEach
-	public void afterTest() {
+	@AfterAll
+	static void afterTest() {
 		driverManager.quiteDriver();
 	}
 }
